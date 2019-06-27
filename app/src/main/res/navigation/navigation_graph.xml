@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main_navigation"
+            app:startDestination="@id/splashFragment">
+
+    <fragment android:id="@+id/splashFragment"
+              android:name="uk.co.applylogic.playground.navigation.ui.onboarding.SplashFragment"
+              android:label="SplashFragment"
+              tools:layout="@layout/splash_fragment">
+
+        <action android:id="@+id/action_splashFragment_to_homeScreenFragment"
+                app:destination="@id/homeScreenFragment"
+                app:popUpTo="@id/splashFragment"
+                app:popUpToInclusive="true"/>
+        <action android:id="@+id/action_splashFragment_to_welcomeFragment"
+                app:destination="@id/welcomeFragment"
+                app:popUpTo="@id/splashFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment android:id="@+id/welcomeFragment"
+              android:name="uk.co.applylogic.playground.navigation.ui.onboarding.WelcomeFragment"
+              android:label="WelcomeFragment"
+              tools:layout="@layout/welcome_fragment">
+
+        <action android:id="@+id/action_welcomeFragment_to_signUpFragment"
+                app:destination="@id/signUpFragment"
+                app:popUpTo="@+id/welcomeFragment"/>
+
+        <action android:id="@+id/action_welcomeFragment_to_signInFragment"
+                app:destination="@+id/signInFragment"
+                app:popUpTo="@+id/welcomeFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/signInFragment"
+              android:name="uk.co.applylogic.playground.navigation.ui.onboarding.SignInFragment"
+              android:label="SignInFragment"
+              tools:layout="@layout/sign_in_fragment">
+
+        <action android:id="@+id/action_signInFragment_to_homeScreenFragment"
+                app:destination="@id/homeScreenFragment"
+                app:popUpTo="@+id/signInFragment"
+                app:popUpToInclusive="true"/>
+
+        <action android:id="@+id/action_signInFragment_to_signUpFragment"
+                app:destination="@id/signUpFragment"
+                app:popUpTo="@+id/signInFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment android:id="@+id/signUpFragment"
+              android:name="uk.co.applylogic.playground.navigation.ui.onboarding.SignUpFragment"
+              android:label="SignUpFragment"
+              tools:layout="@layout/sign_up_fragment">
+
+        <action android:id="@+id/action_signUpFragment_to_homeScreenFragment2"
+                app:destination="@id/homeScreenFragment"
+                app:popUpTo="@+id/signUpFragment"
+                app:popUpToInclusive="true"/>
+
+        <action android:id="@+id/action_signUpFragment_to_signInFragment"
+                app:destination="@id/signInFragment"
+                app:popUpTo="@+id/signUpFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment android:id="@+id/homeScreenFragment"
+              android:name="uk.co.applylogic.playground.navigation.ui.loggedin.HomeScreenFragment"
+              android:label="HomeScreenFragment"
+              tools:layout="@layout/home_fragment"/>
+
+</navigation>
