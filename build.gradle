@@ -2,6 +2,15 @@
 
 buildscript {
     ext.kotlin_version = '1.3.40'
+
+    ext.nav_version = "1.0.0"
+    ext.work_version = "2.1.0-beta02"
+    ext.dagger_version = "2.19"
+    ext.retrofit_version = "2.5.0"
+    ext.leak_canary_version = "1.5.4"
+    ext.glide_version = "4.9.0"
+    ext.picasso_version = "2.71828"
+
     repositories {
         google()
         jcenter()

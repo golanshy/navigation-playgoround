@@ -3,8 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def nav_version = "1.0.0"
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -33,6 +31,10 @@ android {
         sourceCompatibility = "8"
     }
 
+    testOptions {
+        unitTests { includeAndroidResources = true }
+    }
+
     kapt { generateStubs = true }
 
     configurations.all {
@@ -48,11 +50,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //Kotlin
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
 
-    //Android
+    // Android
     implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
     implementation 'androidx.core:core-ktx:1.0.2'
     implementation 'androidx.activity:activity-ktx:1.0.0-beta01'
@@ -64,49 +66,53 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0-alpha07'
 
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 
-    //Android Lifecycle, ViewModel and LiveData
+    // Android Lifecycle, ViewModel and LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha01'
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.2.0-alpha01'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0-alpha01'
     implementation 'androidx.lifecycle:lifecycle-common:2.0.0'
 
-    //Android Navigation
+    // Android Navigation
     implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
     implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
 
+    // Android Work Manager
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    // Google Play Services
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
 
-    //Dependencies injection
-    implementation 'com.google.dagger:dagger:2.19'
-    kapt 'com.google.dagger:dagger-compiler:2.19'
+    // Dependencies injection
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     //Networking
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation 'com.squareup.moshi:moshi-kotlin:1.8.0'
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.8.0")
     implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 
-    //Picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    // Picasso
+    implementation "com.squareup.picasso:picasso:$picasso_version"
 
-    //Glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
-    //Memory Leaks
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    // Memory Leaks
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
+    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
 
-
+    // Testing
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:4.3'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

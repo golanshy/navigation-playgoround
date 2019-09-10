@@ -10,7 +10,7 @@ import uk.co.applylogic.playground.navigation.application.di.DaggerAppComponent
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var viewModel: MainViewModel
 
     private val component: AppComponent by lazy {
         DaggerAppComponent
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         component.inject(this)
 
-        mainViewModel = ViewModelProvider(this@MainActivity, SavedStateVMFactory(this)).get(MainViewModel::class.java)
-        mainViewModel.onViewCreated()
+        viewModel = ViewModelProvider(this@MainActivity, SavedStateVMFactory(this)).get(MainViewModel::class.java)
+        viewModel.onViewCreated()
     }
 }
